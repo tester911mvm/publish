@@ -25,7 +25,7 @@ SECRET_KEY = 'g!8tzfzfkj01&+ud@u02(zoj-fn_a3-q3fsdv7b85v-bk*72=d'
 DEBUG = True
 # DEBUG = False
 # ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -119,7 +119,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'statifiles')
 STATICFILES_DIR = []
+
+import dj_database_url
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
